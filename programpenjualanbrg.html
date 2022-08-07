@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Penjualan Barang</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="home.html">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="programpenjualanbrg.html">Penjualan Barang</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="programpenggajian.html">Penggajian PT Satu Malam</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="formpembbrg.html">Pembelian Barang 1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="formpembbrg2.html">Pembelian Barang 2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="brgelektronik.html">Pejualan Barang Elektronik</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="penjualanmtr.html">Penjualan Motor</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="hitungpln.html">Tagihan Listrik</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Kredit Rumah</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> 
+        <h1> Program Penjualan Barang </h1> <br>
+            <table>
+                <tr>
+                    <td>Nama Barang</td>
+                    <td><input type="text" id="namabarang"></td>
+                </tr>
+                <tr>
+                    <td>Jumlah</td>
+                    <td><input type="text" id="jumlah"></td>
+                </tr>
+                <tr>
+                    <td>Harga</td>
+                    <td><input type="text" id="harga" onkeyup="hitung()"></td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td><input type="text" id="total"></td>
+                </tr>
+                <tr>
+                    <td>Diskon %</td>
+                    <td><input type="text" id="diskon" onkeyup="cari()"></td>
+                </tr>
+                <tr>
+                    <td>Bayar</td>
+                    <td><input type="text" id="bayar"></td>
+                </tr>
+            </table>
+        <button type="submit" class="btn btn-primary" onclick="cetak()">Submit </button>
+        <p id="info"></p>
+
+        <script>
+            function hitung(){
+                var jumlah=document.getElementById('jumlah').value;
+                var harga=document.getElementById('harga').value;
+
+                var total=jumlah*harga;
+                document.getElementById('total').value=total;
+            }
+
+            function cari(){
+                var total=document.getElementById('total').value;
+                var diskon=document.getElementById('diskon').value;
+                var bayar=total-(diskon*total)/100;
+                document.getElementById('bayar').value=bayar;
+            }
+            function cetak(){
+                var pesan="Penjualan ini sudah dihitung otomatis";
+                document.getElementById('info').innerHTML=pesan;
+            }
+        </script>
+    
+      </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Pembelian Barang</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="home.html">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="programpenjualanbrg.html">Penjualan Barang</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="programpenggajian.html">Penggajian PT Satu Malam</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="formpembbrg.html">Pembelian Barang 1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="formpembbrg2.html">Pembelian Barang 2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="brgelektronik.html">Pejualan Barang Elektronik</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="penjualanmtr.html">Penjualan Motor</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="hitungpln.html">Tagihan Listrik</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Kredit Rumah</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> 
+    <h1> Form Pembelian Barang </h1> <br>
+        <table>
+            <tr>    
+                <td>Nama barang</td>
+                <td><select id="brg" onchange="benda()" >
+                        <option value=""> - </option>
+                        <option value="monitor"> Monitor </option>
+                        <option value="tv"> TV </option>
+                        <option value="mouse"> Mouse </option>
+                        <option value="hp"> HP </option>
+                        <option value="usb"> USB </option>
+                        
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Jumlah</td>
+                <td><input type="text" id="jumlah" onkeyup="jumlah()"></td>
+            </tr>
+                <td>Status</td>
+                <td><select id="status" onchange="caridiskon()" >
+                        <option value=""> - </option>
+                        <option value="pelanggan"> Pelanggan </option>
+                        <option value="bukan"> Bukan Pelanggan </option>
+                    </select>
+                </td>
+            <tr>
+                <td>Harga</td>
+                <td><input type="text" id="harga"></td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td><input type="text" id="total"></td>
+            </tr>
+            <tr>
+                <td>Diskon 10%</td>
+                <td><input type="text" id="diskon"></td>
+            </tr>
+            <tr>
+                <td>Bayar</td>
+                <td><input type="text" id="bayar"></td>
+            </tr>
+            
+        </table>
+        <button type="submit" class="btn btn-primary" onclick="cetak()">Submit </button>
+        
+        <p id="info"></p>
+        
+
+        <script>
+            function benda(){
+                var barang=document.getElementById('brg').value;
+                var harga;
+                if (barang=="monitor"){
+                    harga=1000000;
+                }
+                else if(barang=="tv") {
+                    harga=800000;
+                }
+                else if(barang=="mouse"){
+                    harga=50000;
+                }
+                else if(barang=="hp"){
+                    harga=2000000;
+                }
+                else if(barang=="usb"){
+                    harga=40000;
+                }
+                else{
+                    harga=0;
+                }
+
+                document.getElementById('harga').value=harga;
+            }
+
+            function jumlah(){
+                var jumlah=document.getElementById('jumlah').value;
+                var harga=document.getElementById('harga').value;
+                var total=parseFloat(jumlah)*parseFloat(harga);
+                document.getElementById('total').value=total;
+            }
+
+            function caridiskon(){
+                var status=document.getElementById('status').value;
+                var total=document.getElementById('total').value;
+                var diskon;
+                var bayar;
+                if(status=="pelanggan"){
+                    diskon=0.1*parseFloat(total);
+                }
+                else{
+                    diskon=0;
+                }
+                
+                bayar=parseFloat(total)-parseFloat(diskon);
+                document.getElementById('diskon').value=diskon;
+                document.getElementById('bayar').value=bayar;
+            }
+            function cetak(){
+                var pesan="Pesanan Anda Telah Dihitung";
+                document.getElementById('info').innerHTML=pesan;
+            }
+        </script>
+    
+      </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+</html>
