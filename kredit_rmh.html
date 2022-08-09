@@ -43,69 +43,65 @@
           </div>
         </div>
       </nav> 
-    <h1> Program Penggajian PT. Satu Malam 2 Cinta </h1> <br>
-        <table>
-            <tr>
-                <td>Nama Pegawai</td>
-                <td><input type="text" id="namapegawai"></td>
-            </tr>
-            <tr>
-                <td>Jam Kerja</td>
-                <td><input type="text" id="jamkerja"></td>
-            </tr>
-            <tr>
-                <td>Upah Per Jam</td>
-                <td><input type="text" id="upah"></td>
-            </tr>
-            <tr>
-                <td>Anak</td>
-                <td><input type="text" id="anak"></td>
-            </tr>
-            <tr>
-                <td>Gaji</td>
-                <td><input type="text" id="gaji"onkeyup="hitung()"></td>
-            </tr>
-            <tr>
-                <td>Tunjangan Anak 10%</td>
-                <td><input type="text" id="tunjangan"onkeyup="tmbhn()"></td>
-            </tr>
-            <tr>
-                <td>Total Gaji</td>
-                <td><input type="text" id="total" onkeyup="hasil()" ></td>
-            </tr>
-        </table>
-        <button type="submit" class="btn btn-primary" onclick="cetak()">Submit </button>
-        
-        <p id="info"></p>
-        
-
-        <script>
-            function hitung(){
-                var jamkerja=document.getElementById('jamkerja').value;
-                var upah=document.getElementById('upah').value;
-
-                var gaji=jamkerja*upah;
-                document.getElementById('gaji').value=gaji;
-            }
-
-            function tmbhn(){
-                var anak=document.getElementById('anak').value;
-                var gaji=document.getElementById('gaji').value;
-                var tunjangan=gaji*(anak*(10/100));
-                var total=parseFloat(gaji)+parseFloat(tunjangan);
-                document.getElementById('tunjangan').value=tunjangan;
-                document.getElementById('total').value=total;
-            }
-
-            function cetak(){
-                var pesan="Gaji Sudah Dihitung";
-                document.getElementById('info').innerHTML=pesan;
-            }
-
-            
-        </script>
+    <h1> Program Kredit Rumah </h1> <br>
+    <table>
+        <tr>
+            <td>Type Rumah</td>
+            <td>
+                <select id="tipe" onchange="tipermh()" >
+                    <option value=""> - </option>
+                    <option value="almanda"> Almanda </option>
+                    <option value="mawar"> Mawar </option>     
+                </select>
+            </td>
+        </tr>
     
-      </form>
+        <tr>
+            <td>Lama Kredit</td>
+            <td><input type="text" id="kredit" onkeyup="lama()"></td>
+        </tr>
+        <tr>
+            <td>Harga Rumah</td>
+            <td><input type="text" id="harga"></td>
+        </tr>
+        <tr>
+            <td>Uang Muka</td>
+            <td><input type="text" id="dp"onkeyup="uang_muka()"></td>
+        </tr>
+        <tr>
+            <td>Sisa</td>
+            <td><input type="text" id="sisa"></td>
+        </tr>
+        <tr>
+            <td>Angsuran</td>
+            <td><input type="text" id="sisa"></td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-primary" onclick="cetak()">Process </button>
+
+    
+    <script>
+        function tipermh(){
+            var rumah=document.getElementById('tipe').value;
+            var harga;
+            if(rumah=="almanda"){
+                harga=120000000;
+            }
+            else{
+                harga=130000000;
+            }
+
+            document.getElementById('harga').value=harga;
+        }
+
+        function uang_muka(){
+            var harga=document.getElementById('harga').value=harga;
+            var dp=document.getElementById('dp').value=dp;
+            var sisa=parseFloat(harga)-parseFloat(dp);
+            document.getElementById('sisa').value=sisa;
+        }
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 </html>
